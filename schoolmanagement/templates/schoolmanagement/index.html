@@ -1,5 +1,11 @@
 {% extends 'schoolmanagement/base.html' %}
 {% block title %}Home{% endblock %}
 {% block body %}
-       <strong> Dummy School Management System</strong>
+    <strong> Dummy School Management System</strong>
+    <ul>
+        <li>
+            <a href="{% url 'principal:principal' %}">Logged in as Principal(Admin)</a>
+        </li>
+
+    </ul>
 {% endblock %}

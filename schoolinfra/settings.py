@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'schoolmanagement.apps.SchoolmanagementConfig',
+    'principal.apps.PrincipalConfig',
+    'students.apps.StudentsConfig',
+    'teachers.apps.TeachersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
