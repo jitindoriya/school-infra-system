@@ -9,9 +9,6 @@
 ## 3. third party imports
 
 
-
-
-
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -23,9 +20,10 @@ from principal.models import Principal
 class Teacher(models.Model):
     teacher_name = models.CharField(max_length=100)
     principal = models.ForeignKey(Principal)
-    teacher_subject = models.CharField(max_length=50)
     timestamp = models.DateTimeField(auto_now_add=True)
     user=models.OneToOneField(User)
+    teacher_pic = models.ImageField(null=True, blank=True)
+
 
 
 

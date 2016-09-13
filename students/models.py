@@ -6,12 +6,14 @@
 
 ## 2. core django imports
 
-from django.db import models
-from django.contrib.auth.models import User
-
 ## 3. third party imports
 
 ## 4. local imports
+
+from django.db import models
+from django.contrib.auth.models import User
+
+
 
 from teachers.models import Teacher
 from principal.models import Principal
@@ -26,6 +28,7 @@ class Student(models.Model):
     principal = models.ForeignKey(Principal)
     teacher = models.ManyToManyField(Teacher)
     user = models.OneToOneField(User)
+    student_pic = models.ImageField(null=True, blank=True)  ## nedd to add upload function  ##
     
     def __unicode__(self):
     	return self.student_name + '---' + self.student_class
