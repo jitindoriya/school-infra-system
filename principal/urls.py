@@ -5,5 +5,5 @@ app_name = 'principal'
 
 urlpatterns = [
     # Redirect to Home Page
-    #url(r'^$', views.asprincipal, name="principal"),
+    url(r'^$', views.asprincipal, name="principal"),
 ]
