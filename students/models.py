@@ -12,6 +12,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 
 
 
@@ -29,9 +30,20 @@ class Student(models.Model):
     teacher = models.ManyToManyField(Teacher)
     user = models.OneToOneField(User)
     student_pic = models.ImageField(null=True, blank=True)  ## nedd to add upload function  ##
+    slug = models.SlugField()
     
+ 
+    def save(self, *args, **kwargs):
+    	if not self.slug:
+    		self.slug = slugify(student_name)
+    	super(Student, self).save(*args, **kwargs)	
+
     def __unicode__(self):
     	return self.student_name + '---' + self.student_class
 
     def __str__(self):
         return self.student_name + '---' + self.student_class
+	
+    def get_absolute_url(self):
+    	pass
+
