@@ -28,3 +28,4 @@ class Principal(models.Model):
 
     def __str__(self):
         return self.princy_name
+
