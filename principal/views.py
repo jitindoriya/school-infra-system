@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from schoolmanagement.forms import (TeacherForm, UserLoginForm)
 from teachers.models import Teacher
 from django.contrib.auth import (authenticate, login, logout, get_user_model)
@@ -33,8 +35,8 @@ def login_view(request):
     :param request:
     :return:
     '''
-    if request.user.is_authenticated():
-        return render(request, 'principal/principal.html', {})
+    # if request.user.is_authenticated():
+    #     return redirect('principal',{})
 
     form = UserLoginForm(request.POST or None)
     if form.is_valid():

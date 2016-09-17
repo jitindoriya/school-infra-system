@@ -29,12 +29,19 @@
         <div class="collapse navbar-collapse" id="topNavBar">
 
             <ul class="nav navbar-nav navbar-right">
-
+                {% if user.is_authenticated %}
+                 <li>
+                    <a href="{% url 'principal:logout' %}">
+                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; Logout
+                    </a>
+                </li>
+                {% else %}
                 <li>
                     <a href="{% url 'principal:login' %}">
                         <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; Login
                     </a>
                 </li>
+                {% endif %}
             </ul>
         </div>
 
