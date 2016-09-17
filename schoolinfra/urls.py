@@ -22,5 +22,6 @@ urlpatterns = [
 
     # Redirect to app called schoolmanagement
     url(r'^$', include("schoolmanagement.urls")),
-    url(r'^principal/$', include("principal.urls")),
+    url(r'^principal/', include("principal.urls")),
+    url(r'^teacher/', include('teachers.urls')),
 ]

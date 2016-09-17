@@ -1,10 +1,12 @@
 {% extends 'schoolmanagement/base.html' %} }
 {% block title %}Home{% endblock %}
 {% block body %}
-       <strong> Welcome Principal</strong>
+    <strong> Welcome Principal</strong>
     <ul>
         <li>
-            <a href="">Add teacher</a>
+            {% comment %}// TODO: future maintenance, add form of different app from context app.{% endcomment %}
+            {#            <a href="{% url 'principal:addTeacher' %}">Add teacher</a>#}
+            <a href="{% url 'teachers:addTeacher' %}">Add teacher</a>
         </li>
 
     </ul>

@@ -1,0 +1,53 @@
+{% extends 'schoolmanagement/base.html' %}
+{% block title %}All Teachers{% endblock %}
+
+{% block body %}
+    <div class="container-fluid teachers-container">
+        <div class="row">
+            <div class="col-sm-8 col-md-9">
+
+                <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                    <li role="presentation" class="active"><a href="{% url 'teachers:details' %}">View All</a></li>
+
+                </ul>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <h3>All Teachers</h3>
+
+                        {% if error_message %}
+                            <p><strong>{{ error_message }}</strong></p>
+                        {% endif %}
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Teacher Name</th>
+                                <th>Teacher Subject</th>
+                                <th>Teacher Age</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for teacher in all_teacher %}
+                                <tr>
+                                    <td>{{ teacher.teacher_name }}</td>
+                                    <td>{{ teacher.teacher_subject }}</td>
+                                    <td>{{ teacher.teacher_age }}</td>
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
