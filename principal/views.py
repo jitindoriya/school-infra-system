@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from schoolmanagement.forms import TeacherForm
+from schoolmanagement.forms import (TeacherForm, UserLoginForm)
 from teachers.models import Teacher
+from django.contrib.auth import (authenticate, login, logout, get_user_model)
 
 
 # Create your views here.
-def asprincipal(request):
+def as_principal(request):
     return render(request, 'principal/principal.html', {})
 
 
@@ -24,3 +25,37 @@ def add_teacher(request):
         "form": form,
     }
     return render(request, 'teachers/teachers_form.html', context)
+
+
+def login_view(request):
+    '''
+    Login form for Princial as of now only
+    :param request:
+    :return:
+    '''
+    if request.user.is_authenticated():
+        return render(request, 'principal/principal.html', {})
+
+    form = UserLoginForm(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data.get("username")
+        password = form.cleaned_data.get("password")
+        user = authenticate(username=username, password=password)
+        login(request, user)
+        print(request.user.is_authenticated())
+        return render(request, 'principal/principal.html', {})
+    return render(request, 'principal/login_form.html', {"form": form})
+
+
+def logout_view(request):
+    '''
+    When User logged out redirect to homepage
+    :param request:
+    :return:
+    '''
+    logout(request)
+    form = UserLoginForm(request.POST or None)
+    context = {
+        "form": form,
+    }
+    return render(request, 'schoolmanagement/index.html', {})
