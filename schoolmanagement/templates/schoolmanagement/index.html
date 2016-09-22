@@ -1,11 +1,34 @@
-{% extends 'schoolmanagement/base.html' %}
+{% extends 'schoolmanagement/base_0.html' %}
 {% block title %}Home{% endblock %}
 {% block body %}
-    <strong> Dummy School Management System</strong>
+    {% comment %} <strong> Dummy School Management System</strong>
     <ul>
         <li>
-       {#     <a href="{% url 'principal:principal' %}">Logged in as Principal(Admin)</a> #}
+            <a href="{% url 'principal:principal' %}">Logged in as Principal(Admin)</a>
         </li>
 
-    </ul>
+    </ul>{% endcomment %}
+
+    <div class="container">
+
+        <div class="app-header">
+            <h1 class="blog-title">School Management Application!</h1>
+        </div>
+        <div class="col-sm-8">
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <div class="list-group">
+                {% if not user.is_authenticated %}
+                <a class="list-group-item active" href="{% url 'principal:login' %}">Login As Principal</a>
+                {% else %}
+                <a class="list-group-item active" href="{% url 'principal:principal' %}">'{{ admin_name|title }}' Goto Principal Page</a>
+                {% endif %}
+                <a class="list-group-item" href="#">Login As Student</a>
+                <a class="list-group-item" href="#">Login As Teacher</a>
+            </div>
+        </div>
+
+
+    </div>
 {% endblock %}

@@ -8,4 +8,4 @@ def index(request):
     :param request:
     :return:
     '''
-    return render(request, 'schoolmanagement/index.html', {})
+    return render(request, 'schoolmanagement/index.html', {"admin_name": "schoolinfra"})
