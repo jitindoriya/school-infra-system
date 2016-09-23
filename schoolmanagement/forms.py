@@ -1,9 +1,11 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.contrib.auth import (authenticate, login, logout, get_user_model)
+
 from principal.models import Principal
 from teachers.models import Teacher
 from students.models import Student
-from django.contrib.auth import (authenticate, login, logout, get_user_model)
+
 
 
 class TeacherForm(forms.ModelForm):
@@ -35,3 +37,10 @@ class UserLoginForm(forms.Form):
             if not user.is_active:
                 raise forms.ValidationError("User is not active")
         return super(UserLoginForm, self).clean(*args, **kwargs)
+
+
+class UserRegistrationForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email', 'password']
