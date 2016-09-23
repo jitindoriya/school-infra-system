@@ -1,0 +1,6 @@
+<form action="/addstudent/" method="post">
+    {% csrf_token %}
+    {{ userform.as_p }}
+    {{studentform.as_p}}
+    <input type="submit" value="Submit" />
+</form>
