@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Teacher
-from schoolmanagement.forms import TeacherForm
+from schoolmanagement.forms import TeacherForm,TeacherForm
 
 
 # Create your views here.
@@ -45,3 +45,26 @@ class Add_Teacher(View):
         
         return render('students/addstudent.html',{'userform':userform, 'studentform':studenform})
 
+
+class LoginTeacher(View):
+
+    def get(self, request, *args, **kwargs):
+        f = TeacherLoginForm()
+        return render (request, 'teachers/teacherloginform.html', {'f':f})
+
+    def post(self, request, *args, **kwargs):
+        f = TeacherLoginForm(request.POST or None)
+        if f.is_valid():
+            username = f.cleaned_data['username']
+            password = f.cleaned_data['password']
+        #@  print request.user
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+        #       print request.user
+         #       user = request.user
+                return HttpResponseRedirect('/teacherlogin/')   
+        return render (request, 'teachers/teacherloginform.html', {'f':f})
+
+def teacherloggedin(request):
+    return render('teachers/teacherprofile.html')
