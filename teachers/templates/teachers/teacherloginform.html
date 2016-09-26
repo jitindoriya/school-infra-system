@@ -1,4 +1,7 @@
 
 {% load crispy_forms_tags %}
-
+<form action="{%url 'teachers:teacherlogin' %}" method="post">
+{% csrf_token %}
 {{f| crispy}}
+<input type="submit" value="Submit" />
+</form>

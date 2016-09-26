@@ -9,3 +9,8 @@ def index(request):
     :return:
     '''
     return render(request, 'schoolmanagement/index.html', {"admin_name": "schoolinfra"})
+
+
+def thanks(request):
+	render_to_response('schoolmanagement/thanks.html')
+

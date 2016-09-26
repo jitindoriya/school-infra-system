@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import View
+from django.contrib.auth import authenticate,login
+from django.http import HttpResponseRedirect
 
 
 
@@ -47,7 +49,7 @@ class Add_Teacher(View):
             teacherform.save()
             u.save()
 
-            return HttpResponseRedirect('/success/')
+            return HttpResponseRedirect(reverse('schoolmanagement:thanks'))
         
         return render('students/addstudent.html',{'userform':userform, 'studentform':studenform})
 
@@ -69,8 +71,12 @@ class LoginTeacher(View):
                 login(request, user)
         #       print request.user
          #       user = request.user
-                return HttpResponseRedirect('/teacherlogin/')   
+                return HttpResponseRedirect('/teacher/profile/')  
         return render (request, 'teachers/teacherloginform.html', {'f':f})
 
 def teacherloggedin(request):
-    return render('teachers/teacherprofile.html')
+    return render(request, 'teachers/teacherprofile.html')
+
+def teacherloggedout(request):
+    return render(request, 'teachers/teacherloggedout.html')
+

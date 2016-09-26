@@ -24,5 +24,5 @@ urlpatterns = [
     url(r'^', include("schoolmanagement.urls")),
     url(r'^principal/', include("principal.urls")),
     url(r'^teacher/', include('teachers.urls')),
-    url(r'^', include('students.urls')),
+    url(r'^student/', include('students.urls')),
 ]
