@@ -47,7 +47,7 @@ class LoginStudent(View):
 		#		print request.user
          #       user = request.user
                 return HttpResponseRedirect('/studentlogin/')	
-        return render (request, 'students/studentloginform.html', {'f':f})
+		return render (request, 'students/studentloginform.html', {'f':f})
 
 
 

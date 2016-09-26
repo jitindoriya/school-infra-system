@@ -1,11 +1,11 @@
 from django.conf.urls import url
-from . import views
+from .views import LoginTeacher,add_teacher,all_teacher_details
 
 app_name = 'teachers'
 
 urlpatterns = [
     # Redirect to Home Page
-    url(r'add/$', views.add_teacher, name="addTeacher"),
-    url(r'details/$', views.all_teacher_details, name="details"),
-    url(r'teacherlogin/$', views.all_teacher_details),
+    url(r'add/$', add_teacher, name="addTeacher"),
+    url(r'details/$', all_teacher_details, name="details"),
+    url(r'login/$', LoginTeacher.as_view()),
 ]

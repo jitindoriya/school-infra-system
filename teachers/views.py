@@ -1,6 +1,12 @@
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import View
+
+
+
 from .models import Teacher
-from schoolmanagement.forms import TeacherForm,TeacherForm
+from schoolmanagement.forms import TeacherForm
+from .forms import TeacherLoginForm
+
 
 
 # Create your views here.
