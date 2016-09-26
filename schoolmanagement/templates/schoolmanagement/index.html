@@ -24,8 +24,8 @@
                 {% else %}
                 <a class="list-group-item active" href="{% url 'principal:principal' %}">'{{ admin_name|title }}' Goto Principal Page</a>
                 {% endif %}
-                <a class="list-group-item" href="#">Login As Student</a>
-                <a class="list-group-item" href="#">Login As Teacher</a>
+                <a class="list-group-item" href="{% url 'students:studentlogin' %}">Login As Student</a>
+                <a class="list-group-item" href="{% url 'teachers:teacherlogin' %}">Login As Teacher</a>
             </div>
         </div>
 
